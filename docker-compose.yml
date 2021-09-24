@@ -11,5 +11,6 @@ services:
       - ./node:/home/node/app
     # ports:
     #   - "80:3000"
-    command: ['sh', '-c', 'npm i']
+    # command: ['sh', '-c', 'npm i']
     tty: true
+    stdin_open: true
