@@ -1,0 +1,15 @@
+version: '3.2'
+services:
+  node:
+    image: "node:14-alpine"
+    container_name: "hw_node"
+    user: "node"
+    working_dir: /home/node/app
+    # environment:
+    #   - NODE_ENV=production
+    volumes:
+      - ./node:/home/node/app
+    # ports:
+    #   - "80:3000"
+    command: ['sh', '-c', 'npm i']
+    tty: true
