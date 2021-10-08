@@ -1,4 +1,4 @@
-import { IsNumberString, IsOptional } from "class-validator";
+import { IsNumberString, IsOptional } from 'class-validator';
 
 export default class UserListLimit {
   @IsOptional()
