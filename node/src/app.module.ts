@@ -17,7 +17,7 @@ import { DatabaseConfig } from './config/interfaces';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        dialect: 'postgres',
+        dialect: configService.get<DatabaseConfig>('database').dialect,
         host: configService.get<DatabaseConfig>('database').host,
         port: configService.get<DatabaseConfig>('database').port,
         username: configService.get<DatabaseConfig>('database').user,
