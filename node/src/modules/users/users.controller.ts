@@ -12,33 +12,39 @@ import { UsersService } from './users.service';
 import CreateUserDto from './dto/create-user.dto';
 import UpdateUserDto from './dto/update-user.dto';
 import UserListLimit from './dto/user-list-limit.dto';
+import { TimeMeasurement } from 'src/utils/perf.decorator';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
   @Post()
-  async create(@Body() createUserDto: CreateUserDto) {
-    return await this.userService.create(createUserDto);
+  @TimeMeasurement
+  create(@Body() createUserDto: CreateUserDto) {
+    return this.userService.create(createUserDto);
   }
 
   @Get()
-  async findAll(@Query() query: UserListLimit) {
-    return await this.userService.findAll(query);
+  @TimeMeasurement
+  findAll(@Query() query: UserListLimit) {
+    return this.userService.findAll(query);
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: number) {
-    return await this.userService.findOne(id);
+  @TimeMeasurement
+  findOne(@Param('id') id: number) {
+    return this.userService.findOne(id);
   }
 
   @Patch(':id')
-  async update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
-    return await this.userService.update(id, updateUserDto);
+  @TimeMeasurement
+  update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
+    return this.userService.update(id, updateUserDto);
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: number) {
-    return await this.userService.update(id, { isDeleted: true });
+  @TimeMeasurement
+  remove(@Param('id') id: number) {
+    return this.userService.update(id, { isDeleted: true });
   }
 }
