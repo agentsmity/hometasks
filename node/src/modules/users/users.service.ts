@@ -4,6 +4,7 @@ import { User } from './models/user.model';
 import CreateUserDto from './dto/create-user.dto';
 import UpdateUserDto from './dto/update-user.dto';
 import UserListLimit from './dto/user-list-limit.dto';
+import { Op } from 'sequelize';
 
 @Injectable()
 export class UsersService {
@@ -37,6 +38,18 @@ export class UsersService {
     return this.userModel.findOne({
       where: {
         id,
+      },
+    });
+  }
+
+  suggest(part: string, limit = 10, offset = 0): Promise<User[]> {
+    return this.userModel.findAll({
+      limit: limit,
+      offset: offset,
+      where: {
+        login: {
+          [Op.like]: `${part}%`,
+        },
       },
     });
   }
