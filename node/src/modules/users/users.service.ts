@@ -42,6 +42,15 @@ export class UsersService {
     });
   }
 
+  findByLoginPass(login: string, password: string): Promise<User> {
+    return this.userModel.findOne({
+      where: {
+        login: login,
+        password: password,
+      }
+    });
+  }
+
   suggest(part: string, limit = 10, offset = 0): Promise<User[]> {
     return this.userModel.findAll({
       limit: limit,

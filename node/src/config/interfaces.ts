@@ -8,3 +8,7 @@ export interface DatabaseConfig {
   database: string;
   port: number;
 }
+
+export interface JwtConfig {
+  secret: string;
+}
