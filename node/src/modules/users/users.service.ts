@@ -47,7 +47,7 @@ export class UsersService {
       where: {
         login: login,
         password: password,
-      }
+      },
     });
   }
 
