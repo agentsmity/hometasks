@@ -1,10 +1,5 @@
 import { Controller, Post, Request, UseGuards } from '@nestjs/common';
-import {
-  ApiOperation,
-  ApiBody,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiOperation, ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import LoginDto from './dto/login.dto';
@@ -17,7 +12,7 @@ export class AuthController {
 
   @UseGuards(LocalAuthGuard)
   @ApiOperation({ summary: 'Login action' })
-  @ApiBody({ type: LoginDto})
+  @ApiBody({ type: LoginDto })
   @ApiResponse({ status: 202, description: 'Success.', type: TokenDto })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
   @ApiResponse({ status: 403, description: 'Forbidden.' })

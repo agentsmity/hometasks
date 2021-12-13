@@ -23,11 +23,13 @@ export class UsersPermissionsController {
   @UseGuards(JwtStrategy)
   @Post()
   @ApiOperation({ summary: 'Add permission to user.' })
-  @ApiBody({ type: CreateUserPermissionDto})
+  @ApiBody({ type: CreateUserPermissionDto })
   @ApiResponse({ status: 202, description: 'Success.', type: UsersPermissions })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @TimeMeasurement
-  create(@Body() createUserPermissionDto: CreateUserPermissionDto): Promise<UsersPermissions> {
+  create(
+    @Body() createUserPermissionDto: CreateUserPermissionDto,
+  ): Promise<UsersPermissions> {
     return this.usersPermissionsService.addUserPermission(
       createUserPermissionDto,
     );
@@ -37,7 +39,11 @@ export class UsersPermissionsController {
   @Get()
   @TimeMeasurement
   @ApiOperation({ summary: 'List of permissions.' })
-  @ApiResponse({ status: 202, description: 'List of users.', type: [UsersPermissions] })
+  @ApiResponse({
+    status: 202,
+    description: 'List of users.',
+    type: [UsersPermissions],
+  })
   findAll() {
     return this.usersPermissionsService.findAll();
   }

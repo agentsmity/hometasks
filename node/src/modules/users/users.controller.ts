@@ -40,7 +40,7 @@ export class UsersController {
 
   @Post()
   @ApiOperation({ summary: 'Create user' })
-  @ApiBody({ type: CreateUserDto})
+  @ApiBody({ type: CreateUserDto })
   @ApiResponse({ status: 202, description: 'Success.', type: User })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @UseGuards(JwtAuthGuard)
@@ -57,8 +57,8 @@ export class UsersController {
   }
 
   @Get(':id')
-  @ApiOperation({ summary: 'Get user by id.'})
-  @ApiParam({ name: "id", format: "string", example: "1" })
+  @ApiOperation({ summary: 'Get user by id.' })
+  @ApiParam({ name: 'id', format: 'string', example: '1' })
   @ApiResponse({ status: 202, description: 'User.', type: User })
   @UseGuards(JwtAuthGuard)
   findOne(@Param('id') id: number): Promise<User> {
@@ -67,17 +67,20 @@ export class UsersController {
 
   @Patch(':id')
   @ApiOperation({ summary: 'Edit user' })
-  @ApiParam({ name: "id", format: "string", example: "1" })
-  @ApiBody({ type: UpdateUserDto})
+  @ApiParam({ name: 'id', format: 'string', example: '1' })
+  @ApiBody({ type: UpdateUserDto })
   @ApiResponse({ status: 202, description: 'Edited user.', type: User })
   @UseGuards(JwtAuthGuard)
-  update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto): Promise<User> {
+  update(
+    @Param('id') id: number,
+    @Body() updateUserDto: UpdateUserDto,
+  ): Promise<User> {
     return this.userService.update(id, updateUserDto);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Deactivate user' })
-  @ApiParam({ name: "id", format: "string", example: "1" })
+  @ApiParam({ name: 'id', format: 'string', example: '1' })
   @ApiResponse({ status: 202, description: 'Deleted user.', type: User })
   @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: number): Promise<User> {

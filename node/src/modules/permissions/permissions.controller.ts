@@ -31,7 +31,7 @@ export class PermissionsController {
   @UseGuards(JwtStrategy)
   @Post()
   @ApiOperation({ summary: 'Create permission' })
-  @ApiBody({ type: PermissionDto})
+  @ApiBody({ type: PermissionDto })
   @ApiResponse({ status: 202, description: 'Success.', type: Permission })
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   @TimeMeasurement
@@ -42,7 +42,11 @@ export class PermissionsController {
   @UseGuards(JwtStrategy)
   @Get()
   @ApiOperation({ summary: 'List of permissions.' })
-  @ApiResponse({ status: 202, description: 'List of permissions.', type: [Permission] })
+  @ApiResponse({
+    status: 202,
+    description: 'List of permissions.',
+    type: [Permission],
+  })
   @TimeMeasurement
   findAll(): Promise<Permission[]> {
     return this.permissionService.findAll();
@@ -51,9 +55,13 @@ export class PermissionsController {
   @UseGuards(JwtStrategy)
   @Patch(':id')
   @ApiOperation({ summary: 'Edit permission' })
-  @ApiParam({ name: "id", format: "string", example: "1" })
-  @ApiBody({ type: PermissionDto})
-  @ApiResponse({ status: 202, description: 'Edited user.', type: PermissionDto })
+  @ApiParam({ name: 'id', format: 'string', example: '1' })
+  @ApiBody({ type: PermissionDto })
+  @ApiResponse({
+    status: 202,
+    description: 'Edited user.',
+    type: PermissionDto,
+  })
   @TimeMeasurement
   update(@Param('id') id: number, @Body() permissionDto: PermissionDto) {
     return this.permissionService.update(id, permissionDto);
@@ -62,7 +70,7 @@ export class PermissionsController {
   @UseGuards(JwtStrategy)
   @Delete(':id')
   @ApiOperation({ summary: 'Drop permission' })
-  @ApiParam({ name: "id", format: "string", example: "1" })
+  @ApiParam({ name: 'id', format: 'string', example: '1' })
   @TimeMeasurement
   remove(@Param('id') id: number) {
     return this.permissionService.remove(id);

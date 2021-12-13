@@ -25,7 +25,12 @@ export class User extends Model<User> {
     type: DataType.NUMBER,
     allowNull: false,
   })
-  @ApiProperty({ example: 18, description: 'The age of the user', minimum: 18, maximum: 130 })
+  @ApiProperty({
+    example: 18,
+    description: 'The age of the user',
+    minimum: 18,
+    maximum: 130,
+  })
   age: number;
 
   @Column({ defaultValue: false })

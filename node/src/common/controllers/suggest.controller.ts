@@ -21,9 +21,9 @@ export class SuggestController {
   @UseGuards(JwtStrategy)
   @Get()
   @ApiOperation({ summary: 'List of users by part of name' })
-  @ApiQuery({ name: "part", required: true })
-  @ApiQuery({ name: "limit", required: false, example: 10 })
-  @ApiQuery({ name: "offset", required: false, example: 0 })
+  @ApiQuery({ name: 'part', required: true })
+  @ApiQuery({ name: 'limit', required: false, example: 10 })
+  @ApiQuery({ name: 'offset', required: false, example: 0 })
   @ApiResponse({ status: 202, description: 'List of users.', type: [User] })
   @TimeMeasurement
   suggest(@Query() query: SuggestDto) {

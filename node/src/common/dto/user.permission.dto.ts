@@ -6,12 +6,12 @@ export default class CreateUserPermissionDto {
   @IsNotEmpty()
   @IsNumber()
   @Type(() => Number)
-  @ApiProperty({ type: Number})
+  @ApiProperty({ type: Number })
   user_id!: number;
 
   @IsNotEmpty()
   @IsNumber()
   @Type(() => Number)
-  @ApiProperty({ type: Number})
+  @ApiProperty({ type: Number })
   permission_id!: number;
 }

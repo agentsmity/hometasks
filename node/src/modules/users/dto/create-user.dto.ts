@@ -24,6 +24,6 @@ export default class CreateUserDto {
   @IsNotEmpty()
   @Max(130)
   @Min(18)
-  @ApiProperty({ type: Number, minimum: 18, maximum: 130})
+  @ApiProperty({ type: Number, minimum: 18, maximum: 130 })
   age!: number;
 }
