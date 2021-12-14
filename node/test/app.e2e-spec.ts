@@ -12,13 +12,23 @@ describe('AppController (e2e)', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
+    app.setGlobalPrefix('api/v1');
     await app.init();
   });
 
   it('/ (GET)', () => {
     return request(app.getHttpServer())
       .get('/')
-      .expect(200)
-      .expect('Hello World!');
+      .expect(404)
+      .expect(
+        '{"statusCode":404,"message":"Cannot GET /","error":"Not Found"}',
+      );
+  });
+
+  it('/api/v1/users (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/api/v1/users')
+      .expect(401)
+      .expect('{"statusCode":401,"message":"Unauthorized"}');
   });
 });

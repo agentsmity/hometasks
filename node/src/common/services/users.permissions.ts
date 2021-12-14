@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { UsersPermissions } from 'src/common/models/users.permissions';
-import CreateUserPermissionDto from 'src/common/dto/user.permission.dto';
+import { UsersPermissions } from '../../common/models/users.permissions';
+import CreateUserPermissionDto from '../../common/dto/user.permission.dto';
 
 @Injectable()
 export class UsersPermissionsService {

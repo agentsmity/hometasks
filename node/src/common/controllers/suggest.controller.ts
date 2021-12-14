@@ -6,11 +6,11 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { UsersService } from 'src/modules/users/users.service';
-import SuggestDto from 'src/common/dto/suggest.dto';
-import { TimeMeasurement } from 'src/utils/perf.decorator';
-import { User } from 'src/modules/users/models/user.model';
-import { JwtStrategy } from 'src/modules/auth/strategies/jwt.strategy';
+import { UsersService } from '../../modules/users/users.service';
+import SuggestDto from '../../common/dto/suggest.dto';
+import { TimeMeasurement } from '../../utils/perf.decorator';
+import { User } from '../../modules/users/models/user.model';
+import { JwtStrategy } from '../../modules/auth/strategies/jwt.strategy';
 
 @ApiBearerAuth()
 @ApiTags('users')
