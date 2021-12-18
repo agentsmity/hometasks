@@ -12,9 +12,11 @@ import { UsersPermissionsService } from './common/services/users.permissions';
 import { UsersPermissions } from './common/models/users.permissions';
 import { format, transports } from 'winston';
 import { LoggerMiddleware } from './common/midlewares/logger';
+import { AuthModule } from './modules/auth';
 
 @Module({
   imports: [
+    AuthModule,
     UsersModule,
     PermissionsModule,
     SequelizeModule.forFeature([UsersPermissions]),
