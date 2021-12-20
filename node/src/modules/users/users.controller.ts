@@ -22,7 +22,7 @@ import { UsersService } from './users.service';
 import CreateUserDto from './dto/create-user.dto';
 import UpdateUserDto from './dto/update-user.dto';
 import UserListLimit from './dto/user-list-limit.dto';
-import { TimeMeasurement } from 'src/utils/perf.decorator';
+import { TimeMeasurement } from '../../utils/perf.decorator';
 import { User } from './models/user.model';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 

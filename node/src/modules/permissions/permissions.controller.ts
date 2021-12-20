@@ -18,7 +18,7 @@ import {
 } from '@nestjs/swagger';
 import { PermissionsService } from './permissions.service';
 import PermissionDto from './dto/permission.dto';
-import { TimeMeasurement } from 'src/utils/perf.decorator';
+import { TimeMeasurement } from '../../utils/perf.decorator';
 import { Permission } from './models/permission.model';
 import { JwtStrategy } from '../auth/strategies/jwt.strategy';
 
