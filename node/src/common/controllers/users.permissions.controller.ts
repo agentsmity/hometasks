@@ -10,7 +10,7 @@ import { UsersPermissionsService } from '../../common/services/users.permissions
 import CreateUserPermissionDto from '../../common/dto/user.permission.dto';
 import { TimeMeasurement } from '../../utils/perf.decorator';
 import { UsersPermissions } from '../../common/models/users.permissions';
-import { JwtStrategy } from '../../modules/auth/strategies/jwt.strategy';
+import { JwtAuthGuard } from '../../modules/auth/guards/jwt-auth.guard';
 
 @ApiBearerAuth()
 @ApiTags('users')
@@ -20,7 +20,7 @@ export class UsersPermissionsController {
     private readonly usersPermissionsService: UsersPermissionsService,
   ) {}
 
-  @UseGuards(JwtStrategy)
+  @UseGuards(JwtAuthGuard)
   @Post()
   @ApiOperation({ summary: 'Add permission to user.' })
   @ApiBody({ type: CreateUserPermissionDto })
@@ -35,7 +35,7 @@ export class UsersPermissionsController {
     );
   }
 
-  @UseGuards(JwtStrategy)
+  @UseGuards(JwtAuthGuard)
   @Get()
   @TimeMeasurement
   @ApiOperation({ summary: 'List of permissions.' })

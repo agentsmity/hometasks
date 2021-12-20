@@ -10,7 +10,7 @@ import { UsersService } from '../../modules/users/users.service';
 import SuggestDto from '../../common/dto/suggest.dto';
 import { TimeMeasurement } from '../../utils/perf.decorator';
 import { User } from '../../modules/users/models/user.model';
-import { JwtStrategy } from '../../modules/auth/strategies/jwt.strategy';
+import { JwtAuthGuard } from '../../modules/auth/guards/jwt-auth.guard';
 
 @ApiBearerAuth()
 @ApiTags('users')
@@ -18,7 +18,7 @@ import { JwtStrategy } from '../../modules/auth/strategies/jwt.strategy';
 export class SuggestController {
   constructor(private readonly userService: UsersService) {}
 
-  @UseGuards(JwtStrategy)
+  @UseGuards(JwtAuthGuard)
   @Get()
   @ApiOperation({ summary: 'List of users by part of name' })
   @ApiQuery({ name: 'part', required: true })
